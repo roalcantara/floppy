@@ -1,10 +1,11 @@
 # floppy
 
 [![Main](https://github.com/roalcantara/floppy/actions/workflows/main.yml/badge.svg)](https://github.com/roalcantara/floppy/actions/workflows/main.yml)
+[![Release](https://github.com/roalcantara/floppy/actions/workflows/release.yml/badge.svg)](https://github.com/roalcantara/floppy/actions/workflows/release.yml)
 
 A simple [unity][9] app
 
-[![MIT license](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)][2] [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)][5] [![Editor Config](https://img.shields.io/badge/Editor%20Config-1.0.1-crimson.svg)][4] [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)][3]
+[![MIT license](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)][2] [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)][5] [![Editor Config](https://img.shields.io/badge/Editor%20Config-1.0.1-crimson.svg)][4] [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)][3] [![Semantic Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)][14]
 
 ## Install
 
@@ -31,6 +32,13 @@ git clone https://github.com/roalcantara/floppy.git
     - [x] On Success Deploy Preview app
     - [x] Notification
     - [ ] On close Shutdown Preview app
+  - [x] Add release workflow
+    - [x] On push to main
+      - [x] Build the app
+      - [x] [Semantic Release][14] the app
+        - [x] Create Github Release/Tag
+        - [x] Store the build
+        - [x] Send Notification
 
 ## Dependencies
 
@@ -72,3 +80,4 @@ The project is available as open source under the terms of the [MIT][1] [License
 [11]: https://youtu.be/XtQMytORBmM 'The Unity Tutorial For Complete Beginners'
 [12]: https://game.ci 'Game-CI: the fastest and easiest way to automatically test and build games'
 [13]: https://vercel.com/docs/concepts/deployments/preview-deployments 'Vercel: Preview Deployments Overview'
+[14]: https://semantic-release.gitbook.io/semantic-release 'Semantic Release'
