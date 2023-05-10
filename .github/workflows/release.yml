@@ -1,0 +1,87 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  CI: true
+  FORCE_COLOR: true
+  TARGET_PLATFORM: WebGL
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: ${{ !contains(toJSON(github.event.commits.*.message), '[skip-ci]') && !contains(toJSON(github.event.commits.*.message), '[skip ci]') }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Restore Library cache
+        uses: actions/cache@v3
+        with:
+          path: src/Library
+          key: Library-${{ env.TARGET_PLATFORM }}
+
+      - uses: game-ci/unity-builder@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: src
+          targetPlatform: ${{ env.TARGET_PLATFORM }}
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Build-${{ env.TARGET_PLATFORM }}
+          path: build/${{ env.TARGET_PLATFORM }}
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: Build-${{ env.TARGET_PLATFORM }}
+          path: .
+
+      - run: mkdir build && zip -rj build/build-${{ env.TARGET_PLATFORM }}.zip ${{ env.TARGET_PLATFORM }}
+
+      - uses: cycjimmy/semantic-release-action@v3
+        id: semantic
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+      - if: steps.semantic.outputs.new_release_published == 'true'
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@0.3.2
+        with:
+          args: |
+            "New release published: ${{ steps.semantic.outputs.new_release_version }}"
+            "Version => ${{ steps.semantic.outputs.new_release_version }}"
+            "Major Version => ${{ steps.semantic.outputs.new_release_major_version }}"
+            "Minor Version => ${{ steps.semantic.outputs.new_release_minor_version }}"
+            "Patch Version => ${{ steps.semantic.outputs.new_release_patch_version }}"
+            "SHA Last Commit => ${{ steps.semantic.outputs.new_release_git_head }}"
+            "Git Tag => ${{ steps.semantic.outputs.new_release_git_tag }}"
+            "LAST RELEASE Prev Version (if exists) => ${{ steps.semantic.outputs.last_release_version }}"
+            "LAST RELEASE SHA Last commit (if exists) => ${{ steps.semantic.outputs.last_release_git_head }}"
+            "LAST RELEASE Git Tag (if exists) => ${{ steps.semantic.outputs.last_release_git_tag }}"
