@@ -1,5 +1,7 @@
 # floppy
 
+[![Main](https://github.com/roalcantara/floppy/actions/workflows/main.yml/badge.svg)](https://github.com/roalcantara/floppy/actions/workflows/main.yml)
+
 A simple [unity][9] app
 
 [![MIT license](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE)
