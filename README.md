@@ -14,7 +14,7 @@ A simple [unity][9] app
 git clone https://github.com/roalcantara/floppy.git
 ```
 
-## Roadmap
+## TODO
 
 - [x] Setup
   - [x] Create Unity Project
@@ -26,13 +26,13 @@ git clone https://github.com/roalcantara/floppy.git
   - [x] Add Simple Unity PlayMode Tests
   - [x] Add Simple Unity EditMode Tests
   - [x] Configure WebGL Build
-- [x] CI/CD
+- [o] [CI/CD][19] & [DevOps][18]
   - [x] Add main workflow, for each PR
     - [x] Test
     - [x] Build
-    - [x] On Success Deploy Preview app
+    - [x] On Success Deploy [Preview][17] app
     - [x] Notification
-    - [ ] On close Shutdown Preview app
+    - [ ] On close Shutdown [Preview][17] app
   - [x] Add release workflow
     - [x] On push to main
       - [x] Build the app
@@ -45,6 +45,18 @@ git clone https://github.com/roalcantara/floppy.git
       - [x] Download release build
       - [x] Publish to [Itch.io][15]
       - [x] Send Notification
+- [ ] Dev Environment
+  - [ ] Add Dockerfile
+  - [ ] Add Docker Compose
+  - [ ] Build the app locally using Docker
+  - [ ] Run the app locally using Docker
+  - [ ] Add Linter checks
+- [ ] QA
+  - [ ] Configure Gkerking/Cucumber
+  - [ ] Add Relevant Unity Tests Scenarios
+  - [ ] Add Test Coverage
+  - [ ] Link Unity Tests to CI/CD
+  - [ ] Link Issues to CI/CD
 
 ## Dependencies
 
@@ -61,6 +73,8 @@ git clone https://github.com/roalcantara/floppy.git
 - [Game-CI][12]
 - [Vercel: Preview Deployments Overview][13]
 - [Creating pipeline for Unity games using GitHub Actions][15]
+- [Unity: How To Implement A Task Branch Workflow][16]
+- [CI/CD workflow for easy game updates with Addressables & DevOps | Unity at GDC 2023][19]
 
 ## Contributing
 
@@ -89,3 +103,7 @@ The project is available as open source under the terms of the [MIT][1] [License
 [13]: https://vercel.com/docs/concepts/deployments/preview-deployments 'Vercel: Preview Deployments Overview'
 [14]: https://semantic-release.gitbook.io/semantic-release 'Semantic Release'
 [15]: https://jaidengerig.medium.com/create-a-cd-pipeline-to-auto-publish-unity-games-from-github-to-itch-io-in-30-minutes-for-free-bae3b254283c 'Creating pipeline for Unity games using GitHub Actions'
+[16]: https://unity.com/how-to/devops-task-branch-workflow#task-and-task-branch 'Unity: How To Implement A Task Branch Workflow'
+[17]: https://www.uffizzi.com/preview-environments-guide 'The Definitive Guide to Preview Environments'
+[18]: https://unity.com/solutions/devops-explained 'What Is Devops?'
+[19]: https://youtu.be/TQBXx34Otfo 'CI/CD workflow for easy game updates with Addressables & DevOps | Unity at GDC 2023'
