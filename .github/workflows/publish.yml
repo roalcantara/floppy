@@ -1,0 +1,56 @@
+name: Publish
+
+on:
+  release:
+    types:
+      - published
+
+env:
+  CI: true
+  FORCE_COLOR: true
+  TARGET_PLATFORM: WebGL
+
+concurrency:
+  group: production
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  publish:
+    environment:
+      name: production
+      url: ${{ steps.itch.outputs.ITCH_URL }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - id: download-release-asset
+        name: Download release asset
+        uses: dsaltares/fetch-gh-release-asset@master
+        with:
+          version: tags/${{ github.event.release.name }}
+          file: build-${{ env.TARGET_PLATFORM }}.zip
+
+      - uses: josephbmanley/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: html5
+          ITCH_GAME: ${{ vars.ITCH_GAME }}
+          ITCH_USER: ${{ vars.ITCH_USER }}
+          PACKAGE: build-${{ env.TARGET_PLATFORM }}.zip
+          VERSION: ${{ github.event.release.name }}
+
+      - id: itch
+        if: success()
+        run: echo "ITCH_URL=https://${{ vars.ITCH_USER }}.itch.io/${{ vars.ITCH_GAME }}" >> $GITHUB_OUTPUT
+
+      - name: Discord notification
+        if: success()
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@0.3.2
+        with:
+          args: '${{ vars.ITCH_GAME }} ${{ github.event.release.name }} has been released: ${{ steps.itch.outputs.ITCH_URL }}'

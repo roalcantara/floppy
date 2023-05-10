@@ -2,6 +2,7 @@
 
 [![Main](https://github.com/roalcantara/floppy/actions/workflows/main.yml/badge.svg)](https://github.com/roalcantara/floppy/actions/workflows/main.yml)
 [![Release](https://github.com/roalcantara/floppy/actions/workflows/release.yml/badge.svg)](https://github.com/roalcantara/floppy/actions/workflows/release.yml)
+[![Publish](https://github.com/roalcantara/floppy/actions/workflows/publish.yml/badge.svg)](https://github.com/roalcantara/floppy/actions/workflows/publish.yml)
 
 A simple [unity][9] app
 
@@ -39,6 +40,11 @@ git clone https://github.com/roalcantara/floppy.git
         - [x] Create Github Release/Tag
         - [x] Store the build
         - [x] Send Notification
+  - [x] Add publish workflow
+    - [x] On release created
+      - [x] Download release build
+      - [x] Publish to [Itch.io][15]
+      - [x] Send Notification
 
 ## Dependencies
 
@@ -54,6 +60,7 @@ git clone https://github.com/roalcantara/floppy.git
 - [The Unity Tutorial For Complete Beginners][11]
 - [Game-CI][12]
 - [Vercel: Preview Deployments Overview][13]
+- [Creating pipeline for Unity games using GitHub Actions][15]
 
 ## Contributing
 
@@ -81,3 +88,4 @@ The project is available as open source under the terms of the [MIT][1] [License
 [12]: https://game.ci 'Game-CI: the fastest and easiest way to automatically test and build games'
 [13]: https://vercel.com/docs/concepts/deployments/preview-deployments 'Vercel: Preview Deployments Overview'
 [14]: https://semantic-release.gitbook.io/semantic-release 'Semantic Release'
+[15]: https://jaidengerig.medium.com/create-a-cd-pipeline-to-auto-publish-unity-games-from-github-to-itch-io-in-30-minutes-for-free-bae3b254283c 'Creating pipeline for Unity games using GitHub Actions'
