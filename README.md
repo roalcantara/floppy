@@ -26,6 +26,7 @@ git clone https://github.com/roalcantara/floppy.git
 - [Conventional Commits][7]
 - [Unity Learn][10]
 - [The Unity Tutorial For Complete Beginners][11]
+- [Game-CI][12]
 
 ## Contributing
 
@@ -50,3 +51,4 @@ The project is available as open source under the terms of the [MIT][1] [License
 [9]: https://unity.com 'Unity is a cross-platform game engine developed by Unity Technologie'
 [10]: https://learn.unity.com 'Unity Learn: Online learning platform that offers courses to help anyone learn to code'
 [11]: https://youtu.be/XtQMytORBmM 'The Unity Tutorial For Complete Beginners'
+[12]: https://game.ci 'Game-CI: the fastest and easiest way to automatically test and build games'
