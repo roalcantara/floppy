@@ -1,5 +1,7 @@
 # floppy
 
+A simple [unity][9] app
+
 [![MIT license](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)][2]
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)][5]
@@ -22,6 +24,7 @@ git clone https://github.com/roalcantara/floppy.git
 
 - [Standard Readme][5]
 - [Conventional Commits][7]
+- [Unity Learn][10]
 
 ## Contributing
 
@@ -43,3 +46,5 @@ The project is available as open source under the terms of the [MIT][1] [License
 [6]: https://git-scm.com 'Git'
 [7]: https://jorisroovers.com/gitlint 'git commit message linter'
 [8]: https://pre-commit.com 'A framework for managing and maintaining multi-language pre-commit hooks'
+[9]: https://unity.com 'Unity is a cross-platform game engine developed by Unity Technologie'
+[10]: https://learn.unity.com 'Unity Learn: Online learning platform that offers courses to help anyone learn to code'
