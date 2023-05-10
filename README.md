@@ -4,17 +4,33 @@
 
 A simple [unity][9] app
 
-[![MIT license](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)][2]
-[![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)][5]
-[![Editor Config](https://img.shields.io/badge/Editor%20Config-1.0.1-crimson.svg)][4]
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)][3]
+[![MIT license](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)][2] [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg)][5] [![Editor Config](https://img.shields.io/badge/Editor%20Config-1.0.1-crimson.svg)][4] [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)][3]
 
 ## Install
 
 ```sh
 git clone https://github.com/roalcantara/floppy.git
 ```
+
+## Roadmap
+
+- [x] Setup
+  - [x] Create Unity Project
+  - [x] Add Standard Readme
+  - [x] Setup Semantic Commits
+  - [x] Setup Pre-Commit Hooks
+- [x] Unity Demo App
+  - [x] Add Simple Unity Game
+  - [x] Add Simple Unity PlayMode Tests
+  - [x] Add Simple Unity EditMode Tests
+  - [x] Configure WebGL Build
+- [x] CI/CD
+  - [x] Add main workflow, for each PR
+    - [x] Test
+    - [x] Build
+    - [x] On Success Deploy Preview app
+    - [x] Notification
+    - [ ] On close Shutdown Preview app
 
 ## Dependencies
 
@@ -29,6 +45,7 @@ git clone https://github.com/roalcantara/floppy.git
 - [Unity Learn][10]
 - [The Unity Tutorial For Complete Beginners][11]
 - [Game-CI][12]
+- [Vercel: Preview Deployments Overview][13]
 
 ## Contributing
 
@@ -54,3 +71,4 @@ The project is available as open source under the terms of the [MIT][1] [License
 [10]: https://learn.unity.com 'Unity Learn: Online learning platform that offers courses to help anyone learn to code'
 [11]: https://youtu.be/XtQMytORBmM 'The Unity Tutorial For Complete Beginners'
 [12]: https://game.ci 'Game-CI: the fastest and easiest way to automatically test and build games'
+[13]: https://vercel.com/docs/concepts/deployments/preview-deployments 'Vercel: Preview Deployments Overview'
