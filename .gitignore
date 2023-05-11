@@ -78,3 +78,8 @@ crashlytics-build.properties
 # VS Code
 *.vscode
 .vercel
+
+# Build & Output
+/[Dd]ist/
+/[Oo]ut/
+/[Ss]cripts/[Ss]upport
