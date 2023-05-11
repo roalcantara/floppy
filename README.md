@@ -57,6 +57,13 @@ git clone https://github.com/roalcantara/floppy.git
       - [x] All
       - [x] EditMode
       - [x] PlayMode
+  - [x] [Docker][27]
+    - [x] Generate Manual Activation File
+    - [x] Build WebGL
+    - [x] Run Tests
+      - [x] All
+      - [x] EditMode
+      - [x] PlayMode
   - [ ] Linter checks
   - [ ] Unity [Accelerator][21]
 - [ ] QA
@@ -92,7 +99,15 @@ git clone https://github.com/roalcantara/floppy.git
 5. Run `cat Unity_v20XX.x.ulf | pbcopy` to copy the file content
 6. Add a secret named `UNITY_LICENSE` with the content of the license file
 
-### Local commands (MacOS)
+#### Running in Docker
+
+1. Run `make docker/activation_file` to generate the activation file $(PWD)/scripts/support/Unity_v2021.1.7f1.docker.alf
+2. Upload the activation file to [https://license.unity3d.com/manual](https://license.unity3d.com/manual)
+3. Download and save the license file at $(PWD)/scripts/support/Unity_v2021.1.7f1.docker.ulf
+
+### Commands
+
+#### [Local][22] (MacOS)
 
 > It requires $(PWD)/scripts/support/Unity_v2021.x.local.ulf
 > See [Manual license activation][23]
@@ -120,6 +135,28 @@ make test/edit
 make test/play
 ```
 
+#### Container ([Docker][26])
+
+> It requires $(PWD)/scripts/support/Unity_v2021.x.docker.ulf
+> See [Manual license activation][24]
+
+```sh
+## Generate Manual Activation File
+make docker/activation_file
+
+## Build the app for WebGL to dist folder
+make docker/build
+
+## Run all tests
+make docker/test
+
+## Run edit mode tests
+make docker/test/edit
+
+## Run play mode tests
+make docker/test/play
+```
+
 ## Acknowledgments
 
 - [Standard Readme][5]
@@ -132,6 +169,7 @@ make test/play
 - [Unity: How To Implement A Task Branch Workflow][16]
 - [CI/CD workflow for easy game updates with Addressables & DevOps | Unity at GDC 2023][19]
 - [Gopass: Support for binary content][25]
+- [How to build unity3d apps via docker][28]
 
 ## Contributing
 
@@ -170,3 +208,6 @@ The project is available as open source under the terms of the [MIT][1] [License
 [23]: https://docs.unity3d.com/Manual/ManualActivationGuide.html 'Manual license activation'
 [24]: https://game.ci/docs/github/activation 'Activation'
 [25]: https://github.com/gopasspw/gopass/blob/master/docs/features.md#support-for-binary-content 'Gopass: Support for binary content'
+[26]: https://docker.com 'Docker: build, share, and run modern applications'
+[27]: https://game.ci/docs/docker/docker-images 'GameCI Docker images for Unity'
+[28]: https://github.com/kubenstein/how-to-build-unity3d-apps-via-docker 'How to build unity3d apps via docker'
