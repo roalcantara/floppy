@@ -26,7 +26,7 @@ git clone https://github.com/roalcantara/floppy.git
   - [x] Add Simple Unity PlayMode Tests
   - [x] Add Simple Unity EditMode Tests
   - [x] Configure WebGL Build
-- [o] [CI/CD][19] & [DevOps][18]
+- [-] [CI/CD][19] & [DevOps][18]
   - [x] Add main workflow, for each PR
     - [x] Test
     - [x] Build
@@ -45,12 +45,20 @@ git clone https://github.com/roalcantara/floppy.git
       - [x] Download release build
       - [x] Publish to [Itch.io][15]
       - [x] Send Notification
-- [ ] Dev Environment
-  - [ ] Add Dockerfile
-  - [ ] Add Docker Compose
-  - [ ] Build the app locally using Docker
-  - [ ] Run the app locally using Docker
-  - [ ] Add Linter checks
+- [-] Dev Environment
+  - [x] [Makefile][20]
+  - [x] Handle Secrets
+    - [x] [Gopass][25]
+  - [x] [Local][22] (MacOS)
+    - [x] Generate Manual Activation File
+    - [x] Build WebGL
+    - [x] Run WebGL from dist folder
+    - [x] Run Tests
+      - [x] All
+      - [x] EditMode
+      - [x] PlayMode
+  - [ ] Linter checks
+  - [ ] Unity [Accelerator][21]
 - [ ] QA
   - [ ] Configure Gkerking/Cucumber
   - [ ] Add Relevant Unity Tests Scenarios
@@ -63,6 +71,54 @@ git clone https://github.com/roalcantara/floppy.git
 - [git][6]
 - [gitint][7]
 - [pre-commit][8]
+- [GNU Make][20]
+
+## USAGE
+
+### [Manual license activation][23]
+
+#### Running Locally
+
+1. Run `make activation_file` to generate the activation file $(PWD)/scripts/support/Unity_v2021.1.7f1.local.alf
+2. Upload the activation file to [https://license.unity3d.com/manual](https://license.unity3d.com/manual)
+3. Download and save the license file at $(PWD)/scripts/support/Unity_v2021.1.7f1.local.ulf
+
+#### Running on CI/CD ([Activation][24])
+
+1. Execute the Job [Activation](https://github.com/roalcantara/floppy/actions/workflows/activation.yml)
+2. Download the Manual Activation File
+3. Upload the activation file to [https://license.unity3d.com/manual](https://license.unity3d.com/manual)
+4. Download the license file
+5. Run `cat Unity_v20XX.x.ulf | pbcopy` to copy the file content
+6. Add a secret named `UNITY_LICENSE` with the content of the license file
+
+### Local commands (MacOS)
+
+> It requires $(PWD)/scripts/support/Unity_v2021.x.local.ulf
+> See [Manual license activation][23]
+
+```sh
+## Generate Manual Activation File
+make activation_file
+
+## Activate the unity editor with license file
+make activate
+
+## Build the app for WebGL to dist folder
+make build
+
+## Run the app from dist folder
+make run
+
+## Run all tests
+make test
+
+## Run edit mode tests
+make test/edit
+
+## Run play mode tests
+make test/play
+```
 
 ## Acknowledgments
 
@@ -75,6 +131,7 @@ git clone https://github.com/roalcantara/floppy.git
 - [Creating pipeline for Unity games using GitHub Actions][15]
 - [Unity: How To Implement A Task Branch Workflow][16]
 - [CI/CD workflow for easy game updates with Addressables & DevOps | Unity at GDC 2023][19]
+- [Gopass: Support for binary content][25]
 
 ## Contributing
 
@@ -87,7 +144,7 @@ git clone https://github.com/roalcantara/floppy.git
 
 The project is available as open source under the terms of the [MIT][1] [License](LICENSE)
 
-[0]: https://github.com/roalcantara/Dockers
+[0]: https://github.com/roalcantara/floppy
 [1]: https://opensource.org/licenses/MIT 'Open Source Initiative'
 [2]: https://contributor-covenant.org 'A Code of Conduct for Open Source Communities'
 [3]: https://conventionalcommits.org 'Conventional Commits'
@@ -107,3 +164,9 @@ The project is available as open source under the terms of the [MIT][1] [License
 [17]: https://www.uffizzi.com/preview-environments-guide 'The Definitive Guide to Preview Environments'
 [18]: https://unity.com/solutions/devops-explained 'What Is Devops?'
 [19]: https://youtu.be/TQBXx34Otfo 'CI/CD workflow for easy game updates with Addressables & DevOps | Unity at GDC 2023'
+[20]: https://gnu.org/software/make 'GNU Make: A build automation tool'
+[21]: https://docs.unity3d.com/Manual/UnityAccelerator.html 'A caching proxy agent that keeps copies of a team’s imported assets to speed up teamwork'
+[22]: https://docs.unity3d.com/Manual/EditorCommandLineArguments.html 'Unity Editor command line arguments'
+[23]: https://docs.unity3d.com/Manual/ManualActivationGuide.html 'Manual license activation'
+[24]: https://game.ci/docs/github/activation 'Activation'
+[25]: https://github.com/gopasspw/gopass/blob/master/docs/features.md#support-for-binary-content 'Gopass: Support for binary content'
