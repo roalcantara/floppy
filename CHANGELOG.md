@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/roalcantara/floppy/compare/v1.0.0...v1.1.0) (2023-05-11)
+
+
+### Features
+
+* **unity:** Add Unity Builder build script ([f450191](https://github.com/roalcantara/floppy/commit/f45019123971cc857ad74d9cdfa13ed15e43e598))
+
 # 1.0.0 (2023-05-10)
 
 
